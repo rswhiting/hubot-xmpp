@@ -1040,6 +1040,10 @@ describe 'XmppBot', ->
           type: 'groupchat'
         name: 'message'
         flag: 'ignore_me'
+        getChild: ->
+          body =
+            getText: ->
+              'fake-uuid-for-testing'
       proxied = bot.readMessage
       bot.readMessage = (message) ->
         proxied(message)
@@ -1084,3 +1088,4 @@ describe 'XmppBot', ->
         assert.equal message, '@bot howdy'
         done()
       bot.read stanza
+
